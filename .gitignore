@@ -45,3 +45,5 @@
 
 # builds
 cmake-*
+/build
+build/
