@@ -1,0 +1,161 @@
+---
+# Strict clang-tidy configuration for modern C++ (C++23)
+
+Checks: >
+  -*,
+
+  # Core correctness
+  clang-analyzer-*,
+  clang-analyzer-cplusplus.*,
+
+  # C++ Core Guidelines
+  cppcoreguidelines-*,
+  -cppcoreguidelines-avoid-magic-numbers,
+  -cppcoreguidelines-pro-bounds-pointer-arithmetic,
+  -cppcoreguidelines-pro-type-reinterpret-cast,
+
+  # Modernize to C++23 idioms
+  modernize-*,
+  -modernize-use-trailing-return-type,
+
+  # Performance
+  performance-*,
+
+  # Readability
+  readability-*,
+  -readability-magic-numbers,
+  -readability-named-parameter,
+  -readability-uppercase-literal-suffix,
+
+  # Bugprone patterns
+  bugprone-*,
+  -bugprone-easily-swappable-parameters,
+
+  # HICPP (High Integrity C++)
+  hicpp-*,
+  -hicpp-avoid-goto,
+  -hicpp-no-array-decay,
+  -hicpp-signed-bitwise,
+  -hicpp-uppercase-literal-suffix,
+
+  # Google style (selected)
+  google-build-namespaces,
+  google-explicit-constructor,
+  google-readability-avoid-underscore-in-googletest-name,
+  google-runtime-int,
+  google-runtime-operator,
+  google-upgrade-googletest-case,
+
+  # Miscellaneous
+  misc-*,
+  -misc-non-private-member-variables-in-classes,
+
+  # portability
+  portability-*,
+
+  # concurrency
+  concurrency-*,
+
+WarningsAsErrors: >
+  clang-analyzer-*,
+  bugprone-*,
+  cppcoreguidelines-pro-type-*,
+  modernize-*,
+  performance-*,
+
+HeaderFilterRegex: '(src|include)/.*\.(h|hpp)$'
+
+FormatStyle: file
+
+CheckOptions:
+  # ── Naming conventions ──────────────────────────────────────────────────
+  - key: readability-identifier-naming.NamespaceCase
+    value: lower_case
+  - key: readability-identifier-naming.ClassCase
+    value: CamelCase
+  - key: readability-identifier-naming.StructCase
+    value: CamelCase
+  - key: readability-identifier-naming.EnumCase
+    value: CamelCase
+  - key: readability-identifier-naming.EnumConstantCase
+    value: CamelCase
+  - key: readability-identifier-naming.FunctionCase
+    value: camelBack
+  - key: readability-identifier-naming.MethodCase
+    value: camelBack
+  - key: readability-identifier-naming.VariableCase
+    value: camelBack
+  - key: readability-identifier-naming.ParameterCase
+    value: camelBack
+  - key: readability-identifier-naming.MemberCase
+    value: camelBack
+  - key: readability-identifier-naming.PrivateMemberSuffix
+    value: '_'
+  - key: readability-identifier-naming.ConstantCase
+    value: UPPER_CASE
+  - key: readability-identifier-naming.TemplateParameterCase
+    value: CamelCase
+  - key: readability-identifier-naming.TypeAliasCase
+    value: CamelCase
+  - key: readability-identifier-naming.TypedefCase
+    value: CamelCase
+  - key: readability-identifier-naming.MacroDefinitionCase
+    value: UPPER_CASE
+
+  # ── Readability ──────────────────────────────────────────────────────────
+  - key: readability-function-cognitive-complexity.Threshold
+    value: '15'
+  - key: readability-function-size.LineThreshold
+    value: '80'
+  - key: readability-function-size.ParameterThreshold
+    value: '6'
+  - key: readability-function-size.BranchThreshold
+    value: '10'
+  - key: readability-function-size.NestingThreshold
+    value: '4'
+  - key: readability-implicit-bool-conversion.AllowIntegerConditions
+    value: '0'
+  - key: readability-implicit-bool-conversion.AllowPointerConditions
+    value: '0'
+  - key: readability-qualified-auto.AddConstToQualified
+    value: '1'
+
+  # ── Modernize ────────────────────────────────────────────────────────────
+  - key: modernize-use-default-member-init.UseAssignment
+    value: '1'
+  - key: modernize-loop-convert.MinConfidence
+    value: reasonable
+  - key: modernize-pass-by-value.IncludeStyle
+    value: llvm
+
+  # ── Performance ──────────────────────────────────────────────────────────
+  - key: performance-move-const-arg.CheckTriviallyCopyableMove
+    value: '1'
+  - key: performance-unnecessary-value-param.IncludeStyle
+    value: llvm
+
+  # ── Bugprone ─────────────────────────────────────────────────────────────
+  - key: bugprone-argument-comment.StrictMode
+    value: '1'
+  - key: bugprone-assert-side-effect.AssertMacros
+    value: assert,ASSERT,EXPECT
+  - key: bugprone-dangling-handle.HandleClasses
+    value: 'std::basic_string_view;std::span'
+  - key: bugprone-signed-char-misuse.CharTypdefsToIgnore
+    value: ''
+  - key: bugprone-too-small-loop-variable.MagnitudeBitsUpperLimit
+    value: '16'
+
+  # ── Misc ─────────────────────────────────────────────────────────────────
+  - key: misc-include-cleaner.IgnoreHeaders
+    value: ''
+  - key: misc-throw-by-value-catch-by-reference.CheckThrowTemporaries
+    value: '1'
+
+  # ── cppcoreguidelines ────────────────────────────────────────────────────
+  - key: cppcoreguidelines-special-member-functions.AllowSoleDefaultDtor
+    value: '1'
+  - key: cppcoreguidelines-special-member-functions.AllowMissingMoveFunctions
+    value: '0'
+  - key: cppcoreguidelines-narrowing-conversions.PedanticMode
+    value: '1'
