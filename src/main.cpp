@@ -2,8 +2,19 @@
 // Created by be on 3/15/26.
 //
 
-#include <print>
+#include <raylib.h>
 
 auto main() -> int {
-    std::print("Hello World!\n");
+    InitWindow(640, 480, "Bilhar");
+    SetTargetFPS(60);
+
+    while (!WindowShouldClose()) {
+        BeginDrawing();
+
+        ClearBackground(BLACK);
+
+        EndDrawing();
+    }
+
+    CloseWindow();
 }
