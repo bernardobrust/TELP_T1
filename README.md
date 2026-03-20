@@ -1,7 +1,7 @@
-# Trabalho 1 de Tópicos Especiais em Linguagens de Programação
-Repo do Cauã e do Bernardo pro trabalho 1
+# First assigment for Special Topics in Programming Languages
+Cauã and Bernardo's repo
 
-## Build
+## Building
 
 ### Using GCC on macOS (recommended for `std::execution::par_unseq`)
 
