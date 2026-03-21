@@ -1,6 +1,12 @@
 # First assigment for Special Topics in Programming Languages
 Cauã and Bernardo's repo
 
+## Idea
+This assigment aims to solve the situation proposed at `analysis/TELP Key Ideas.pdf`. That is, 
+optimize the detection of the nearest ball in a dynamic pool table.
+
+We aim to do this by mixing BVH (bounding volume hierarchies) and ODEs (ordinary differential equations).
+
 ## Building
 
 ### Using GCC on macOS (recommended for `std::execution::par_unseq`)
