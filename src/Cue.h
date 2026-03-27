@@ -4,6 +4,7 @@
 
 #ifndef TELP_T1_CUE_H
 #define TELP_T1_CUE_H
+#include "raylib.h"
 
 
 class Cue {
@@ -11,6 +12,7 @@ class Cue {
 
 public:
     static constexpr float width{10.0}, height{130.0};
+    static constexpr auto cue_color = BROWN;
 
     explicit Cue(const float x, const float y) : m_pos_x{x}, m_pos_y{y} {}
     ~Cue() = default;
@@ -22,6 +24,9 @@ public:
     [[nodiscard]] float get_pos_y() const {
         return m_pos_y;
     }
+
+    auto update() -> void;
+    auto draw() const -> void;
 };
 
 

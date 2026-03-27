@@ -14,9 +14,7 @@ constexpr size_t window_width = 800;
 constexpr size_t window_height = 600;
 constexpr size_t fps_target = 240;
 
-constexpr auto ball_color = RAYWHITE;
 constexpr auto background_color = BLACK;
-constexpr auto cue_color = BROWN;
 
 static std::array balls {
     Ball(10.0, 10.0, 2.0, 2.0),
@@ -29,17 +27,21 @@ static std::array balls {
 static Cue cue(400, 300);
 
 auto App::tick() -> void {
-    // Empty for now
+    std::ranges::for_each(balls, [](auto &e) {
+        e.update();
+    });
+
+    cue.update();
 }
 
 auto App::render() -> void {
     BeginDrawing();
 
     std::ranges::for_each(std::as_const(balls), [](const auto &e) {
-        DrawCircle(e.get_pos_x(), e.get_pos_y(), Ball::radius, ball_color);
+        e.draw();
     });
 
-    DrawRectangle(cue.get_pos_x(), cue.get_pos_y(), Cue::width, Cue::height, cue_color);
+    cue.draw();
 
     ClearBackground(background_color);
 
