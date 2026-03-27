@@ -4,19 +4,43 @@
 
 #include "App.h"
 
-#include <numeric>
-#include <vector>
-#include <print>
+#include <raylib.h>
 
 #include "add_vecs.h"
 
-auto App::init() -> void {}
+constexpr size_t window_width = 800;
+constexpr size_t window_height = 600;
+constexpr size_t fps_target = 240;
 
-auto App::run() -> void {
-    const std::vector<int> v1 = {1, 2, 3}, v2 = {4, 5, 6};
-    const std::vector<int> v3 = add_vecs(v1, v2);
+constexpr auto ball_color = RAYWHITE;
+constexpr auto background_color = BLACK;
 
-    std::println("Sum: {}", std::accumulate(v3.begin(), v3.end(), 0));
+auto App::tick() -> void {
+    // Empty for now
 }
 
-auto App::cleanup() -> void {}
+auto App::render() -> void {
+    BeginDrawing();
+
+    ClearBackground(background_color);
+
+    EndDrawing();
+}
+
+auto App::init() -> void {
+    InitWindow(window_width, window_height, "Bilhar");
+    SetTargetFPS(240);
+}
+
+auto App::run() -> void {
+    while (!WindowShouldClose()) {
+        tick();
+        render();
+    }
+}
+
+auto App::cleanup() -> int {
+    CloseWindow();
+
+    return 0;
+}

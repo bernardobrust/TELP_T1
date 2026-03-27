@@ -8,5 +8,5 @@
 auto main() -> int {
     App::init();
     App::run();
-    App::cleanup();
+    return App::cleanup();
 }
