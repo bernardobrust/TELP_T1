@@ -11,8 +11,11 @@ class Ball {
 public:
     static constexpr float radius{6.0};
 
-    Ball(const float x, const float y, const float vel_x, const float vel_y) : m_pos_x{x}, m_pos_y{y}, m_vel_x{vel_x}, m_vel_y{vel_y} {
-    };
+    explicit Ball(const float x, const float y, const float vel_x, const float vel_y) : m_pos_x{x}, m_pos_y{y},
+        m_vel_x{vel_x},
+        m_vel_y{vel_y} {
+    }
+
     ~Ball() = default;
 
     [[nodiscard]] float get_pos_x() const {
