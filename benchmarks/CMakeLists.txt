@@ -1,4 +1,6 @@
-# ── Google Benchmark ────────────────────────────────────────────────────────
+# ── Google Benchmark ─────────────────────────────────────────────────────────
+message("Cloning Google Benchmark")
+
 FetchContent_Declare(
         benchmark
         GIT_REPOSITORY https://github.com/google/benchmark.git

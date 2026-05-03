@@ -9,6 +9,19 @@ We aim to do this by mixing BVH (bounding volume hierarchies) and ODEs (ordinary
 
 ## Building
 
+### Standard compilation procedure (Unix systems)
+```bash
+mkdir -p build
+cd build
+cmake ..
+make -j$(nrpoc)
+```
+
+You will get three binaries:
+`TELP_T1`, the main executable;
+`benchmarks/TELP_T1_benchmarks`, for mesuring performance;
+`tests/TELP_T1_tests`, for mesuring accuracy;
+
 ### Using GCC on macOS (recommended for `std::execution::par_unseq`)
 
 Apple Clang uses libc++, which does not implement the C++17 parallel execution policies. To get `std::execution::par_unseq` (and parallel algorithms in general) working, use GCC from Homebrew:

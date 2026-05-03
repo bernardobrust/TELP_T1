@@ -55,3 +55,5 @@ add_subdirectory(benchmarks)
 
 add_executable(${PROJECT_NAME} main.cpp)
 target_link_libraries(${PROJECT_NAME} PRIVATE src_lib)
+
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)

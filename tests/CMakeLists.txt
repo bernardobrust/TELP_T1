@@ -1,4 +1,6 @@
-# ── Google Test ─────────────────────────────────────────────────────────────
+# ── Google Test ──────────────────────────────────────────────────────────────
+message("Cloning GTest")
+
 FetchContent_Declare(
         googletest
         GIT_REPOSITORY https://github.com/google/googletest.git

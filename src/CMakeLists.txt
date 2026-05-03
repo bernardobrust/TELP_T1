@@ -1,4 +1,10 @@
 # ── Raylib ──────────────────────────────────────────────────────────────────
+message("Cloning Raylib")
+
+# Support for wayland is not enabled by default for some reason...
+set(GLFW_BUILD_WAYLAND ON CACHE BOOL "" FORCE)
+set(GLFW_BUILD_X11 ON CACHE BOOL "" FORCE)
+
 FetchContent_Declare(
         raylib
         GIT_REPOSITORY https://github.com/raysan5/raylib.git
