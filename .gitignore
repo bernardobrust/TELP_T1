@@ -40,10 +40,7 @@
 # debug information files
 *.dwo
 
-# IDE
-.idea
-
 # builds
 cmake-*
-/build
 build/
+compile_commands.json
