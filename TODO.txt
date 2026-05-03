@@ -1,0 +1,22 @@
+@BVH.hxx:
+TODO: Add missing methods
+
+@BVH.cpp:
+TODO: Implement everything there
+
+@AABB.hxx and @Ball.hxx:
+TODO: Transfer circle implementation to ball
+
+@Ball and @Cue:
+TODO: Change the data to be std::pair
+
+@tests/:
+TEST: Test the AABB2D
+TEST: Test the BVH
+
+@benchmarks/:
+BENCHMARK: Bench AABB2D 
+BENCHMARK: Bench BVH 
+
+@ALL:
+NOTE: Add docstrings to methods
