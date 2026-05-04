@@ -9,12 +9,6 @@
 #include "raylib.h"
 
 struct App {
-  static constexpr unsigned window_width = 800;
-  static constexpr unsigned window_height = 600;
-  static constexpr unsigned fps_target = 240;
-
-  static constexpr Color background_color = BLACK;
-
   std::array<Ball, 5> balls{
       Ball(10.0, 10.0, 2.0, 2.0),  Ball(50.0, 10.0, 2.0, 2.0),
       Ball(100.0, 30.0, 2.0, 2.0), Ball(170.0, 50.0, 2.0, 2.0),
@@ -22,6 +16,11 @@ struct App {
   };
 
   Cue cue{400, 300};
+
+  static constexpr unsigned window_width = 800;
+  static constexpr unsigned window_height = 600;
+  static constexpr unsigned fps_target = 240;
+  static constexpr Color background_color = BLACK;
 
   auto inline tick() -> void {
     std::ranges::for_each(balls, [](auto& e) { e.update(); });

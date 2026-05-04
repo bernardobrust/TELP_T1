@@ -6,6 +6,7 @@ TODO: Implement everything there
 
 @tests/:
 TEST: Test the AABB2D
+TEST: Test ball collision checks
 TEST: Test the BVH
 
 @benchmarks/:

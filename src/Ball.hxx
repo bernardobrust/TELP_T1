@@ -10,7 +10,7 @@ class Ball {
  private:
   std::pair<float, float> m_pos{}, m_vel{};
   static constexpr float radius{6.0}, pi{std::numbers::pi};
-  static constexpr auto ball_color = RAYWHITE;
+  static constexpr Color ball_color = RAYWHITE;
 
  public:
   explicit Ball(const float x, const float y, const float vel_x,
