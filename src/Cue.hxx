@@ -6,17 +6,18 @@
 
 class Cue {
   std::pair<float, float> m_pos{};
+  static constexpr float width{10.0}, height{130.0};
+  static constexpr Color cue_color = BROWN;
 
  public:
-  static constexpr float width{10.0}, height{130.0};
-  static constexpr auto cue_color = BROWN;
-
   explicit Cue(const float x, const float y) : m_pos(x, y) {}
   ~Cue() = default;
 
-  [[nodiscard]] float get_pos_x() const { return m_pos.first; }
-  [[nodiscard]] float get_pos_y() const { return m_pos.second; }
+  [[nodiscard]] inline float get_pos_x() const { return m_pos.first; }
+  [[nodiscard]] inline float get_pos_y() const { return m_pos.second; }
 
   auto update() -> void;
-  auto draw() const -> void;
+  auto inline draw() const -> void {
+    DrawRectangle(m_pos.first, m_pos.second, width, height, cue_color);
+  }
 };

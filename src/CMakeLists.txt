@@ -16,5 +16,5 @@ FetchContent_MakeAvailable(raylib)
 file(GLOB_RECURSE SOURCES CONFIGURE_DEPENDS *.cpp)
 
 add_library(src_lib ${SOURCES})
+target_link_libraries(src_lib PUBLIC raylib)
 target_include_directories(src_lib PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-target_link_libraries(src_lib PRIVATE raylib)

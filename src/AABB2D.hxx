@@ -45,7 +45,7 @@ class AABB2D {
                    min_coords.second);
   }
 
-  static AABB2D merge(const AABB2D& a, const AABB2D& b) {
+  static inline AABB2D merge(const AABB2D& a, const AABB2D& b) {
     return AABB2D(std::min(a.min_coords.first, b.min_coords.first),
                   std::min(a.min_coords.second, b.min_coords.second),
                   std::max(a.max_coords.first, b.max_coords.first),

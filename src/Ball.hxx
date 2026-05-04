@@ -10,10 +10,9 @@ class Ball {
  private:
   std::pair<float, float> m_pos{}, m_vel{};
   static constexpr float radius{6.0}, pi{std::numbers::pi};
-
- public:
   static constexpr auto ball_color = RAYWHITE;
 
+ public:
   explicit Ball(const float x, const float y, const float vel_x,
                 const float vel_y)
       : m_pos(x, y), m_vel(vel_x, vel_y) {}
@@ -29,11 +28,13 @@ class Ball {
   }
 
   // Smallest AABB enclosing the circle
-  auto to_aabb() -> AABB2D const {
+  auto inline to_aabb() -> AABB2D const {
     return AABB2D(m_pos.first - radius, m_pos.second - radius,
                   m_pos.first + radius, m_pos.second + radius);
   }
 
   auto update() -> void;
-  auto draw() const -> void;
+  auto inline draw() const -> void {
+    DrawCircle(m_pos.first, m_pos.second, radius, ball_color);
+  }
 };

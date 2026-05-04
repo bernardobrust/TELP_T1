@@ -44,10 +44,10 @@ class BVH {
 
  public:
   // Constructed from a span-derived structure
-  explicit BVH(std::span<Ball>& balls);
+  explicit BVH(const std::span<Ball>& balls);
   ~BVH() = default;
 
   // We want to be able to lookup a ball given it's coordinates
-  auto lookup(float x, float y) -> Ball;
-  auto lookup(std::pair<float, float> coords) -> Ball;
+  auto lookup(const float x, const float y) -> Ball;
+  auto lookup(const std::pair<float, float> coords) -> Ball;
 };

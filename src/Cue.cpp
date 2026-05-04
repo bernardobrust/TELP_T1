@@ -7,7 +7,3 @@ auto Cue::update() -> void {
   m_pos.first = x - (width / 2);
   m_pos.second = y - (height / 2);
 }
-
-auto Cue::draw() const -> void {
-  DrawRectangle(m_pos.first, m_pos.second, width, height, cue_color);
-}
