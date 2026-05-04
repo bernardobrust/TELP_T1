@@ -4,6 +4,7 @@
 #include <memory>
 #include <span>
 #include <utility>
+#include <vector>
 
 #include "Ball.hxx"
 
@@ -25,26 +26,29 @@
 
     We are not woried about insertion as the whole construction happens in the
    start.
+
+   We will be storing the ID of each volume in the nodes, it will reference a
+   global array of Balls. This allows for contiguous memory access on what would
+   otherwise be a sparse datastructure. This way we can leverage cache.
 */
 
 // We could template this BVH, but we are just using "Ball" so let's skip the
 // formalisms of generic programming
 struct BVHNode {
-  // We give an id to each volume
-  unsigned id{};
-  std::unique_ptr<Ball> node{};
-  std::array<Ball, 2> children;
+  unsigned m_id{};
+  std::array<unsigned, 2> m_children;
 };
 
 class BVH {
  private:
+  static std::vector<Ball> m_balls;
+
  public:
   // Constructed from a span-derived structure
   explicit BVH(std::span<Ball>& balls);
+  ~BVH() = default;
 
   // We want to be able to lookup a ball given it's coordinates
   auto lookup(float x, float y) -> Ball;
   auto lookup(std::pair<float, float> coords) -> Ball;
-
-  ~BVH() = default;
 };

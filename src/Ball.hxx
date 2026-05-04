@@ -1,9 +1,11 @@
 #pragma once
 
+#include <utility>
+
 #include "raylib.h"
 
 class Ball {
-  float m_pos_x{}, m_pos_y{}, m_vel_x{}, m_vel_y{};
+  std::pair<float, float> m_pos{}, m_vel{};
 
  public:
   static constexpr float radius{6.0};
@@ -11,13 +13,11 @@ class Ball {
 
   explicit Ball(const float x, const float y, const float vel_x,
                 const float vel_y)
-      : m_pos_x{x}, m_pos_y{y}, m_vel_x{vel_x}, m_vel_y{vel_y} {}
-
+      : m_pos(x, y), m_vel(vel_x, vel_y) {}
   ~Ball() = default;
 
-  [[nodiscard]] float get_pos_x() const { return m_pos_x; }
-
-  [[nodiscard]] float get_pos_y() const { return m_pos_y; }
+  [[nodiscard]] float get_pos_x() const { return m_pos.first; }
+  [[nodiscard]] float get_pos_y() const { return m_pos.second; }
 
   auto update() -> void;
   auto draw() const -> void;
