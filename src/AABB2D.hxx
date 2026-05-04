@@ -9,9 +9,10 @@
 #include <utility>
 
 class AABB2D {
- public:
+ private:
   std::pair<float, float> min_coords{}, max_coords{};
 
+ public:
   explicit AABB2D(float min_x, float min_y, float max_x, float max_y)
       : min_coords(min_x, min_y), max_coords(max_x, max_y) {};
   explicit AABB2D(std::pair<float, float> min_c, std::pair<float, float> max_c)
@@ -45,7 +46,7 @@ class AABB2D {
                    min_coords.second);
   }
 
-  static inline AABB2D merge(const AABB2D& a, const AABB2D& b) {
+  static inline auto merge(const AABB2D& a, const AABB2D& b) -> AABB2D {
     return AABB2D(std::min(a.min_coords.first, b.min_coords.first),
                   std::min(a.min_coords.second, b.min_coords.second),
                   std::max(a.max_coords.first, b.max_coords.first),

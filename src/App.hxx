@@ -8,19 +8,19 @@
 #include "Cue.hxx"
 #include "raylib.h"
 
+// TODO: Check if the order of the member data is adequate
 struct App {
   std::array<Ball, 5> balls{
-      Ball(10.0, 10.0, 2.0, 2.0),  Ball(50.0, 10.0, 2.0, 2.0),
-      Ball(100.0, 30.0, 2.0, 2.0), Ball(170.0, 50.0, 2.0, 2.0),
-      Ball(400.0, 70.0, 2.0, 2.0),
+      Ball(10.0f, 10.0f, 2.0f, 2.0f),  Ball(50.0f, 10.0f, 2.0f, 2.0f),
+      Ball(100.0f, 30.0f, 2.0f, 2.0f), Ball(170.0f, 50.0f, 2.0f, 2.0f),
+      Ball(400.0f, 70.0f, 2.0f, 2.0f),
   };
 
-  Cue cue{400, 300};
+  Cue cue{400.0f, 300.0f};
 
-  static constexpr unsigned window_width = 800;
-  static constexpr unsigned window_height = 600;
-  static constexpr unsigned fps_target = 240;
-  static constexpr Color background_color = BLACK;
+  static constexpr unsigned window_width{800}, window_height{600},
+      fps_target{240};
+  static constexpr Color background_color{BLACK};
 
   auto inline tick() -> void {
     std::ranges::for_each(balls, [](auto& e) { e.update(); });
@@ -43,7 +43,7 @@ struct App {
 
   auto inline init() -> void {
     InitWindow(window_width, window_height, "Bilhar");
-    SetTargetFPS(240);
+    SetTargetFPS(fps_target);
   }
 
   auto inline run() -> void {

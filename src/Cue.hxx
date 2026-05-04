@@ -6,7 +6,7 @@
 
 class Cue {
   std::pair<float, float> m_pos{};
-  static constexpr float width{10.0}, height{130.0};
+  static constexpr float width{10.0f}, height{130.0f};
   static constexpr Color cue_color = BROWN;
 
  public:
